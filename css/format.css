@@ -129,7 +129,17 @@
 	text-align: center;
 	color: white;
 }
+@media (max-width: 399px) {
 
+	#img {
+		display: block;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: auto;
+		height: 100%;
+	}
+}
 #tmp{
 	display: inline-block;
 	font-size: 17px;
