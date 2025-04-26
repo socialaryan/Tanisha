@@ -1,17 +1,28 @@
 <!DOCTYPE HTML>
 <html lang="en">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<meta charset="UTF-8">
-		<title>First anniversary of love</title>
-		<link rel="stylesheet" type="text/css" href="./css/format.css">
-	</head>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta charset="UTF-8">
+	<title>First anniversary of love</title>
+	<link rel="stylesheet" type="text/css" href="./css/format.css">
+</head>
 
-	<body style="margin:0px">
-		<audio controls autoplay>
-			<source src="music/music.mp3" type="audio/mp3">
-			Your browser does not support the audio.
-		</audio>
+<body style="margin:0px">
+
+	<!-- Audio element (not autoplaying directly) -->
+	<audio id="bgMusic" loop>
+		<source src="music/music.mp3" type="audio/mpeg">
+		Your browser does not support the audio.
+	</audio>
+
+	<!-- START screen -->
+	<div id="startScreen" style="position:fixed; top:0; left:0; right:0; bottom:0; background:#000; color:#fff; display:flex; justify-content:center; align-items:center; z-index:9999; flex-direction:column;">
+		<h2>💖 To Someone Who I Love Spending Time the Most 💖</h2>
+		<button onclick="startApp()" style="padding:15px 30px; font-size:18px;">Start</button>
+	</div>
+
+	<!-- Rest of your content (hidden initially) -->
+	<div id="mainContent" style="display:none;">
 		<canvas></canvas>
 		<div id="imgTxt">
 			<span id="Txt"></span> <br />
@@ -20,7 +31,6 @@
 		</div>
 		<br><br>
 		<div id="heartTxt">
-			
 			<span id="clickMe">Click!</span>
 			<div id="heart">
 				<button id="button" onclick="play()"></button>
@@ -34,30 +44,46 @@
 				<b id="h"></b> Hours
 				<b id="m"></b> Minutes
 				<b id="s"></b> Seconds
-				
 			</div>
 		</div>
-		
-    	<div id = "typeDiv">
-        	<span id="txt1"></span> <br />
-        	<span id="txt2"></span>
-    	</div>		
 
-		<script>
-			var ok = 0;
-			var flag = 1;
-			var myImage = document.getElementById("img");
-			var myTxt = document.getElementById("Txt");
-			var imageArray = ["pic/pic2.jpeg", "pic/pic1.jpeg"];
-			var imageIndex = 0;
-		
-			 var len = imageArray.length;
-			var t = 0;
-		</script>
-		
-		<script type="text/javascript" src="./js/stars.js"></script>
-		<script type="text/javascript" src="./js/typeWriter.js"></script>
-		<script type="text/javascript" src="./js/date.js"></script>
-		<script type="text/javascript" src="./js/playImg.js"></script>
-	</body>
+		<div id="typeDiv">
+			<span id="txt1"></span> <br />
+			<span id="txt2"></span>
+		</div>
+	</div>
+
+	<script>
+		function startApp() {
+			// Hide start screen, show main content
+			document.getElementById('startScreen').style.display = 'none';
+			document.getElementById('mainContent').style.display = 'block';
+
+			// Play the background music
+			const music = document.getElementById("bgMusic");
+			music.play().then(() => {
+				console.log("Music started");
+			}).catch((err) => {
+				console.error("Music play failed:", err);
+			});
+		}
+	</script>
+
+	<!-- Your image code and scripts -->
+	<script>
+		var ok = 0;
+		var flag = 1;
+		var myImage = document.getElementById("img");
+		var myTxt = document.getElementById("Txt");
+		var imageArray = ["pic/pic2.jpeg", "pic/pic1.jpeg"];
+		var imageIndex = 0;
+		var len = imageArray.length;
+		var t = 0;
+	</script>
+
+	<script type="text/javascript" src="./js/stars.js"></script>
+	<script type="text/javascript" src="./js/typeWriter.js"></script>
+	<script type="text/javascript" src="./js/date.js"></script>
+	<script type="text/javascript" src="./js/playImg.js"></script>
+</body>
 </html>
